@@ -1,0 +1,13 @@
+FLAGS = -z execstack -fno-stack-protector -static
+TARGET = rop_memcpy rop_strcpy
+
+all: $(TARGET)
+
+rop_memcpy: rop_memcpy.c
+  gcc $(FLAGS) -o $@ rop_memcpy.c
+
+rop_strcpy: rop_strcpy.c
+  gcc $(FLAGS) -o $@ rop_strcpy.c
+
+clean:
+  rm $(TARGET)
